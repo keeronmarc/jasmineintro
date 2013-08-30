@@ -1,24 +1,6 @@
-//****************************************************************************
-//                Overview: 
-// Take Form input data, validate data, store variables as object, save object into 
-// array, Loop through array and display all objects in array
-//*****************************************************************************
-// Step 1: Validating data Redo/Rethink
-//      (a)Place all inputs in variables
-//      (b)Convert variables to array to manipulate
-//      (c)Loop through all inputs to determine if empty
-//          if (one or more fields) are empty mark red, send modal alert
-//          if not empty, 
-//        
-// Step 2(a): Saves input data as variables, store into object {}
-//     (b): "Return" stops function & allows data for use globally (**/check this/**)
-// Step 3: Take object data and place into array
-// Step 4: Loop through array - create function
-// Step 5: Create listings from array(obejct), place into div and display
-// Step 6: Remove repeating inputs submitted from previous submits
-
 var formdata_array = [];
 var allusers = [];
+
 $(document).ready(function() {
   $('.button').click(function() {
 // Step 1: Run Validate data function
@@ -39,7 +21,7 @@ function forminputdata () {
   var coffees = $('.cup_joe').val();
 
   var formoutputdata = {
-    firstname: firstName,
+    firstname: firstName,     
     lastname: lastName,
     email: email,
     cups: coffees,
@@ -59,55 +41,34 @@ function loop_output(holder){
 }
 
 function validateForm () {
-    var emptyfield = 0;
-    $('input').css("background", "none");
-    $("input").each(function () {
-    if ($(this).val() == ""){
-      $(this).css("background", "red");
-      emptyfield++; 
-      }
-    })
-    if (emptyfield > 0) {
+  // by setting valid to true, you create a way for data 
+  // to evaluate right/wrong to be sent
+  // can do it with numbers or with true/false
+  // return is the data being sent 
+  // so it reads when data is valid, sent data to next step
+      var valid = true;
       var element = $('.element');
-      var active = function(){
-          element.removeClass('inactive').addClass('active');
-          element.append('<p>You Might Want to Check Again!</p>');
-      };
-      $('.closebtn').click(function() {
-        element.removeClass('active').addClass('inactive');
-        $('.element > p').remove('p');
+      var input = $('input');
+      element.removeClass('active')
+      element.removeClass('inactive')
+      input.removeClass("warning")
+      input.each(function(){
+          if ($(this).val() == "") {
+            console.log("input empty");
+            valid = false;
+            input.addClass("errorwarning")
+            element.addClass('active')
+            $('.element p').remove('p');
+            element.append("<p>No, no, no that doesn't work</p>")
+            $('.closebtn').click(function() {
+              element.removeClass('active').addClass('inactive');
+            })
+          }
       })
-      setTimeout(active, 100);
-      // closer ();
-      return false;
-    }
-  return true;
-  }
-
-  
-// function validateForm () {
-//   // by setting valid to true, you create a way for data 
-//   // to evaluate right/wrong to be sent
-//   // can do it with numbers or with true/false
-//   // return is the data being sent 
-//   // so it reads when data is valid, sent data to next step
-//       var valid = true;
-//       $('.message').removeClass('popup-message')
-//       $('input').removeClass("warning")
-//       $('input').each(function(){
-//           if ($(this).val() == "") {
-//             console.log("input empty");
-//             valid = false;
-//             $(this).addClass("warning")
-//             $('.message').addClass('popup-message')
-//           }
-
-//       })
-//       // returning valid sends the data out, by setting
-//       return valid
-// }
+      // returning valid sends the data out, by setting
+      return valid
+}
       
-
 
 
 

@@ -30,6 +30,9 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	text-transform: uppercase;
 }
 
+.popup-message {
+
+}
 
 .datasubmit {
 	width: 300px;
@@ -56,10 +59,6 @@ body, html { font-size: 100%; padding: 0; margin: 0;}
 	margin: 20px 0px 0px 0px;
 }
 
-.warning {
-	height: 300px;
-	width: 200px;
-}
 
 .button a{
 	width: 100px;
@@ -233,6 +232,13 @@ h1 {
 	background: rgba(255,255,255,0.1);
 }
 
+.errorwarning {
+	background-color: #ff0066;
+	width: 300px;
+	height: 60px;
+	z-index: 10;
+}
+
 .rightcontent {
 	float: right;
 	width: 600px;
@@ -240,6 +246,7 @@ h1 {
 	font-size: 4em;
 	line-height: 1.5;
 }
+
 
 /*
 .codrops-icon-next:after {

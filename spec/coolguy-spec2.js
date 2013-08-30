@@ -18,8 +18,19 @@ describe("Form", function () {
 		it("should display no error message if inputs exist", function(){
 				$('input').val('valueexists');
 				$(".button").click();
-				var warning = $('input').css("background", "red");
-				expect(warning).toBe("background", "none");
+				expect($('.form').css('margin')).toBe('20px');
+		})
+
+		it("should display no error message if inputs exist", function(){
+				$('input').val('valueexists');
+				$(".button").click();
+				expect($('.form').addClass('warning'))
+		})
+
+		it("should display modal when one input is blank", function(){
+				$('input').val('');
+				$(".button").click();
+				expect($('.form').css('margin')).toBe('20px');
 		})
 
 
